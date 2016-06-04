@@ -1,0 +1,910 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="posdbModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="accounts">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountName" Type="varchar" MaxLength="45" />
+          <Property Name="Description" Type="varchar" MaxLength="150" />
+          <Property Name="ParentAccountID" Type="int" />
+        </EntityType>
+        <EntityType Name="business">
+          <Key>
+            <PropertyRef Name="BusinessID" />
+          </Key>
+          <Property Name="BusinessID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BusinessName" Type="varchar" MaxLength="30" />
+          <Property Name="BusinessTypeID" Type="int" />
+          <Property Name="City" Type="varchar" MaxLength="20" />
+          <Property Name="State" Type="varchar" MaxLength="20" />
+          <Property Name="Country" Type="varchar" MaxLength="20" />
+          <Property Name="CurrencyCode" Type="varchar" MaxLength="8" />
+          <Property Name="BusLogoFileName" Type="varchar" MaxLength="250" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="Slogan" Type="varchar" MaxLength="100" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+          <Property Name="CellNumber" Type="varchar" MaxLength="45" />
+          <Property Name="OfficeNumber" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="businesstypes">
+          <Key>
+            <PropertyRef Name="BusinessTypeID" />
+          </Key>
+          <Property Name="BusinessTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BusinessTypeName" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="categories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="70" />
+          <Property Name="ParentCategoryID" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="customers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="45" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="45" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="inventory">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="RecordID" />
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="PackingTypeID" Type="int" />
+          <Property Name="PurchasePrice" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="SalePrice" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="PurchaseDate" Type="timestamp" Precision="0" />
+          <Property Name="SaleDate" Type="datetime" Precision="0" />
+          <Property Name="CreateDt" Type="timestamp" Precision="0" />
+          <Property Name="UpdateDt" Type="timestamp" Precision="0" />
+          <Property Name="SumQuantity" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="InvoiceID" Type="varchar" MaxLength="45" />
+          <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="packingtypes">
+          <Key>
+            <PropertyRef Name="PackingTypeID" />
+          </Key>
+          <Property Name="PackingTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackingTypes" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="posusers">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="45" />
+          <Property Name="Password" Type="varchar" MaxLength="45" />
+          <Property Name="LastLoginTime" Type="datetime" Precision="0" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="LogoutTime" Type="datetime" Precision="0" />
+          <Property Name="createdt" Type="datetime" Precision="0" />
+          <Property Name="updatedt" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="45" />
+          <Property Name="ProductDescription" Type="varchar" MaxLength="100" />
+          <Property Name="SupplierID" Type="int" />
+          <Property Name="ProductTypeID" Type="int" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="Barcode" Type="varchar" MaxLength="20" />
+          <Property Name="ImageFileName" Type="varchar" MaxLength="80" />
+          <Property Name="GuaranteePeriodYears" Type="varchar" MaxLength="10" />
+          <Property Name="WarrantyPeriodYears" Type="varchar" MaxLength="10" />
+          <Property Name="ProductSize" Type="varchar" MaxLength="10" />
+          <Property Name="ProductWeight" Type="varchar" MaxLength="10" />
+          <Property Name="ProductWidth" Type="varchar" MaxLength="10" />
+          <Property Name="ProductHeight" Type="varchar" MaxLength="10" />
+          <Property Name="ProductColor" Type="varchar" MaxLength="15" />
+          <Property Name="ProductCode" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="products_reorderlevel">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ReorderLevel" Type="int" />
+        </EntityType>
+        <EntityType Name="purchasesorderdetails">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Discount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="PurchasePrice" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="TaxPercentage" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="InvoiceID" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="purchasesorders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerminalID" Type="int" />
+          <Property Name="SupplierID" Type="int" />
+          <Property Name="PurchaseAmount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="PurchaseTime" Type="time" Precision="0" />
+          <Property Name="Discount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="TaxPercentage" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="PurchaseStatus" Type="int" />
+          <Property Name="AmountPaid" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Balance" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="ModeOfPayment" Type="varchar" MaxLength="45" />
+          <Property Name="UserName" Type="varchar" MaxLength="45" />
+          <Property Name="PurchaseDate" Type="timestamp" Precision="0" />
+          <Property Name="Date_DayofWeek_string" Type="varchar" MaxLength="45" />
+          <Property Name="Date_Dayofweek_int" Type="int" />
+          <Property Name="Date_dateofmonth_int" Type="int" />
+          <Property Name="date_month_int" Type="int" />
+          <Property Name="date_month_string" Type="varchar" MaxLength="45" />
+          <Property Name="date_year_int" Type="int" />
+          <Property Name="time_hour" Type="int" />
+          <Property Name="UpdateDt" Type="timestamp" Precision="0" />
+          <Property Name="HoldInvoice" Type="int" />
+          <Property Name="InvoiceID" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="regions">
+          <Key>
+            <PropertyRef Name="RegionID" />
+          </Key>
+          <Property Name="RegionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegionName" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="salesorderdetails">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Discount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="SalePrice" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="PurchasePrice" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="FinalSalePrice" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="ProfitTaken" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="TaxPercentage" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="InvoiceID" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="salesorders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerminalID" Type="int" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="SaleAmount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="SaleTime" Type="time" Precision="0" />
+          <Property Name="Discount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="TaxPercentage" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="SaleStatus" Type="int" />
+          <Property Name="AmountPaid" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Balance" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="ModeOfPayment" Type="varchar" MaxLength="45" />
+          <Property Name="UserName" Type="varchar" MaxLength="45" />
+          <Property Name="SaleDate" Type="timestamp" Precision="0" />
+          <Property Name="Date_DayofWeek_string" Type="varchar" MaxLength="45" />
+          <Property Name="Date_Dayofweek_int" Type="int" />
+          <Property Name="Date_dateofmonth_int" Type="int" />
+          <Property Name="date_month_int" Type="int" />
+          <Property Name="date_month_string" Type="varchar" MaxLength="45" />
+          <Property Name="date_year_int" Type="int" />
+          <Property Name="time_hour" Type="int" />
+          <Property Name="UpdateDt" Type="timestamp" Precision="0" />
+          <Property Name="HoldInvoice" Type="int" />
+          <Property Name="InvoiceID" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="stores">
+          <Key>
+            <PropertyRef Name="StoreID" />
+          </Key>
+          <Property Name="StoreID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StoreName" Type="varchar" MaxLength="45" />
+          <Property Name="StoreAddress" Type="varchar" MaxLength="100" />
+          <Property Name="BusinessID" Type="int" />
+          <Property Name="ServerIP" Type="varchar" MaxLength="45" />
+          <Property Name="ServerPort" Type="int" />
+        </EntityType>
+        <EntityType Name="suppliers">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierName" Type="varchar" MaxLength="45" />
+          <Property Name="ContactName" Type="varchar" MaxLength="45" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="45" />
+          <Property Name="SupplierAddress" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="taxes">
+          <Key>
+            <PropertyRef Name="TaxID" />
+          </Key>
+          <Property Name="TaxID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaxDescription" Type="varchar" MaxLength="45" />
+          <Property Name="TaxAppliedDate" Type="date" />
+        </EntityType>
+        <EntityType Name="terminals">
+          <Key>
+            <PropertyRef Name="TerminalID" />
+          </Key>
+          <Property Name="TerminalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerminalName" Type="varchar" MaxLength="45" />
+          <Property Name="StoreID" Type="int" />
+          <Property Name="PrinterType" Type="int" />
+        </EntityType>
+        <EntityType Name="transactions">
+          <Key>
+            <PropertyRef Name="transactionid" />
+          </Key>
+          <Property Name="entrydate" Type="date" />
+          <Property Name="entrytime" Type="time" Precision="0" />
+          <Property Name="Debit" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Credit" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="description" Type="varchar" MaxLength="200" />
+          <Property Name="transactionid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="accountid" Type="int" />
+        </EntityType>
+        <EntityContainer Name="posdbModelStoreContainer">
+          <EntitySet Name="accounts" EntityType="Self.accounts" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="business" EntityType="Self.business" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="businesstypes" EntityType="Self.businesstypes" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="categories" EntityType="Self.categories" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="customers" EntityType="Self.customers" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="inventory" EntityType="Self.inventory" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="packingtypes" EntityType="Self.packingtypes" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="posusers" EntityType="Self.posusers" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="products" EntityType="Self.products" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="products_reorderlevel" EntityType="Self.products_reorderlevel" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="purchasesorderdetails" EntityType="Self.purchasesorderdetails" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="purchasesorders" EntityType="Self.purchasesorders" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="regions" EntityType="Self.regions" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="roles" EntityType="Self.roles" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="salesorderdetails" EntityType="Self.salesorderdetails" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="salesorders" EntityType="Self.salesorders" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="stores" EntityType="Self.stores" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="suppliers" EntityType="Self.suppliers" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="taxes" EntityType="Self.taxes" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="terminals" EntityType="Self.terminals" Schema="posdb" store:Type="Tables" />
+          <EntitySet Name="transactions" EntityType="Self.transactions" Schema="posdb" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="posdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="posdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="accounts" EntityType="posdbModel.account" />
+          <EntitySet Name="businesses" EntityType="posdbModel.business" />
+          <EntitySet Name="businesstypes" EntityType="posdbModel.businesstype" />
+          <EntitySet Name="categories" EntityType="posdbModel.category" />
+          <EntitySet Name="customers" EntityType="posdbModel.customer" />
+          <EntitySet Name="inventories" EntityType="posdbModel.inventory" />
+          <EntitySet Name="packingtypes" EntityType="posdbModel.packingtype" />
+          <EntitySet Name="posusers" EntityType="posdbModel.posuser" />
+          <EntitySet Name="products" EntityType="posdbModel.product" />
+          <EntitySet Name="products_reorderlevel" EntityType="posdbModel.products_reorderlevel" />
+          <EntitySet Name="purchasesorderdetails" EntityType="posdbModel.purchasesorderdetail" />
+          <EntitySet Name="purchasesorders" EntityType="posdbModel.purchasesorder" />
+          <EntitySet Name="regions" EntityType="posdbModel.region" />
+          <EntitySet Name="roles" EntityType="posdbModel.role" />
+          <EntitySet Name="salesorderdetails" EntityType="posdbModel.salesorderdetail" />
+          <EntitySet Name="salesorders" EntityType="posdbModel.salesorder" />
+          <EntitySet Name="stores" EntityType="posdbModel.store" />
+          <EntitySet Name="suppliers" EntityType="posdbModel.supplier" />
+          <EntitySet Name="taxes" EntityType="posdbModel.tax" />
+          <EntitySet Name="terminals" EntityType="posdbModel.terminal" />
+          <EntitySet Name="transactions" EntityType="posdbModel.transaction" />
+        </EntityContainer>
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ParentAccountID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="business">
+          <Key>
+            <PropertyRef Name="BusinessID" />
+          </Key>
+          <Property Name="BusinessID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessTypeID" Type="Int32" />
+          <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="BusLogoFileName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Slogan" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CellNumber" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="OfficeNumber" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="businesstype">
+          <Key>
+            <PropertyRef Name="BusinessTypeID" />
+          </Key>
+          <Property Name="BusinessTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessTypeName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="ParentCategoryID" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="inventory">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="RecordID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Decimal" />
+          <Property Name="PackingTypeID" Type="Int32" />
+          <Property Name="PurchasePrice" Type="Decimal" />
+          <Property Name="SalePrice" Type="Decimal" />
+          <Property Name="PurchaseDate" Type="DateTime" />
+          <Property Name="SaleDate" Type="DateTime" />
+          <Property Name="CreateDt" Type="DateTime" />
+          <Property Name="UpdateDt" Type="DateTime" />
+          <Property Name="SumQuantity" Type="Decimal" />
+          <Property Name="InvoiceID" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="packingtype">
+          <Key>
+            <PropertyRef Name="PackingTypeID" />
+          </Key>
+          <Property Name="PackingTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackingTypes" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="posuser">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="LastLoginTime" Type="DateTime" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="LogoutTime" Type="DateTime" />
+          <Property Name="createdt" Type="DateTime" />
+          <Property Name="updatedt" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SupplierID" Type="Int32" />
+          <Property Name="ProductTypeID" Type="Int32" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="Barcode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ImageFileName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="GuaranteePeriodYears" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="WarrantyPeriodYears" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ProductSize" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ProductWeight" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ProductWidth" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ProductHeight" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ProductColor" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="products_reorderlevel">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ReorderLevel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="purchasesorderdetail">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Decimal" />
+          <Property Name="Discount" Type="Decimal" />
+          <Property Name="PurchasePrice" Type="Decimal" />
+          <Property Name="TaxPercentage" Type="Decimal" />
+          <Property Name="InvoiceID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="purchasesorder">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerminalID" Type="Int32" />
+          <Property Name="SupplierID" Type="Int32" />
+          <Property Name="PurchaseAmount" Type="Decimal" />
+          <Property Name="PurchaseTime" Type="Time" />
+          <Property Name="Discount" Type="Decimal" />
+          <Property Name="TaxPercentage" Type="Decimal" />
+          <Property Name="PurchaseStatus" Type="Int32" />
+          <Property Name="AmountPaid" Type="Decimal" />
+          <Property Name="Balance" Type="Decimal" />
+          <Property Name="ModeOfPayment" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="PurchaseDate" Type="DateTime" />
+          <Property Name="Date_DayofWeek_string" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Date_Dayofweek_int" Type="Int32" />
+          <Property Name="Date_dateofmonth_int" Type="Int32" />
+          <Property Name="date_month_int" Type="Int32" />
+          <Property Name="date_month_string" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="date_year_int" Type="Int32" />
+          <Property Name="time_hour" Type="Int32" />
+          <Property Name="UpdateDt" Type="DateTime" />
+          <Property Name="HoldInvoice" Type="Int32" />
+          <Property Name="InvoiceID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="region">
+          <Key>
+            <PropertyRef Name="RegionID" />
+          </Key>
+          <Property Name="RegionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegionName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="salesorderdetail">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Decimal" />
+          <Property Name="Discount" Type="Decimal" />
+          <Property Name="SalePrice" Type="Decimal" />
+          <Property Name="PurchasePrice" Type="Decimal" />
+          <Property Name="FinalSalePrice" Type="Decimal" />
+          <Property Name="ProfitTaken" Type="Decimal" />
+          <Property Name="TaxPercentage" Type="Decimal" />
+          <Property Name="InvoiceID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="salesorder">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerminalID" Type="Int32" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="SaleAmount" Type="Decimal" />
+          <Property Name="SaleTime" Type="Time" />
+          <Property Name="Discount" Type="Decimal" />
+          <Property Name="TaxPercentage" Type="Decimal" />
+          <Property Name="SaleStatus" Type="Int32" />
+          <Property Name="AmountPaid" Type="Decimal" />
+          <Property Name="Balance" Type="Decimal" />
+          <Property Name="ModeOfPayment" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="SaleDate" Type="DateTime" />
+          <Property Name="Date_DayofWeek_string" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Date_Dayofweek_int" Type="Int32" />
+          <Property Name="Date_dateofmonth_int" Type="Int32" />
+          <Property Name="date_month_int" Type="Int32" />
+          <Property Name="date_month_string" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="date_year_int" Type="Int32" />
+          <Property Name="time_hour" Type="Int32" />
+          <Property Name="UpdateDt" Type="DateTime" />
+          <Property Name="HoldInvoice" Type="Int32" />
+          <Property Name="InvoiceID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="store">
+          <Key>
+            <PropertyRef Name="StoreID" />
+          </Key>
+          <Property Name="StoreID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StoreName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="StoreAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessID" Type="Int32" />
+          <Property Name="ServerIP" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ServerPort" Type="Int32" />
+        </EntityType>
+        <EntityType Name="supplier">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ContactName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="SupplierAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tax">
+          <Key>
+            <PropertyRef Name="TaxID" />
+          </Key>
+          <Property Name="TaxID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaxDescription" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="TaxAppliedDate" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="terminal">
+          <Key>
+            <PropertyRef Name="TerminalID" />
+          </Key>
+          <Property Name="TerminalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerminalName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="StoreID" Type="Int32" />
+          <Property Name="PrinterType" Type="Int32" />
+        </EntityType>
+        <EntityType Name="transaction">
+          <Key>
+            <PropertyRef Name="transactionid" />
+          </Key>
+          <Property Name="entrydate" Type="DateTime" />
+          <Property Name="entrytime" Type="Time" />
+          <Property Name="Debit" Type="Decimal" />
+          <Property Name="Credit" Type="Decimal" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="transactionid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="accountid" Type="Int32" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="posdbModelStoreContainer" CdmEntityContainer="posdbEntities">
+          <EntitySetMapping Name="accounts">
+            <EntityTypeMapping TypeName="posdbModel.account">
+              <MappingFragment StoreEntitySet="accounts">
+                <ScalarProperty Name="ParentAccountID" ColumnName="ParentAccountID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="businesses">
+            <EntityTypeMapping TypeName="posdbModel.business">
+              <MappingFragment StoreEntitySet="business">
+                <ScalarProperty Name="OfficeNumber" ColumnName="OfficeNumber" />
+                <ScalarProperty Name="CellNumber" ColumnName="CellNumber" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Slogan" ColumnName="Slogan" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="BusLogoFileName" ColumnName="BusLogoFileName" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="BusinessTypeID" ColumnName="BusinessTypeID" />
+                <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+                <ScalarProperty Name="BusinessID" ColumnName="BusinessID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="businesstypes">
+            <EntityTypeMapping TypeName="posdbModel.businesstype">
+              <MappingFragment StoreEntitySet="businesstypes">
+                <ScalarProperty Name="BusinessTypeName" ColumnName="BusinessTypeName" />
+                <ScalarProperty Name="BusinessTypeID" ColumnName="BusinessTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="posdbModel.category">
+              <MappingFragment StoreEntitySet="categories">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ParentCategoryID" ColumnName="ParentCategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="posdbModel.customer">
+              <MappingFragment StoreEntitySet="customers">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inventories">
+            <EntityTypeMapping TypeName="posdbModel.inventory">
+              <MappingFragment StoreEntitySet="inventory">
+                <ScalarProperty Name="RecordID" ColumnName="RecordID" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="SumQuantity" ColumnName="SumQuantity" />
+                <ScalarProperty Name="UpdateDt" ColumnName="UpdateDt" />
+                <ScalarProperty Name="CreateDt" ColumnName="CreateDt" />
+                <ScalarProperty Name="SaleDate" ColumnName="SaleDate" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+                <ScalarProperty Name="PackingTypeID" ColumnName="PackingTypeID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="packingtypes">
+            <EntityTypeMapping TypeName="posdbModel.packingtype">
+              <MappingFragment StoreEntitySet="packingtypes">
+                <ScalarProperty Name="PackingTypes" ColumnName="PackingTypes" />
+                <ScalarProperty Name="PackingTypeID" ColumnName="PackingTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="posusers">
+            <EntityTypeMapping TypeName="posdbModel.posuser">
+              <MappingFragment StoreEntitySet="posusers">
+                <ScalarProperty Name="updatedt" ColumnName="updatedt" />
+                <ScalarProperty Name="createdt" ColumnName="createdt" />
+                <ScalarProperty Name="LogoutTime" ColumnName="LogoutTime" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="posdbModel.product">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductColor" ColumnName="ProductColor" />
+                <ScalarProperty Name="ProductHeight" ColumnName="ProductHeight" />
+                <ScalarProperty Name="ProductWidth" ColumnName="ProductWidth" />
+                <ScalarProperty Name="ProductWeight" ColumnName="ProductWeight" />
+                <ScalarProperty Name="ProductSize" ColumnName="ProductSize" />
+                <ScalarProperty Name="WarrantyPeriodYears" ColumnName="WarrantyPeriodYears" />
+                <ScalarProperty Name="GuaranteePeriodYears" ColumnName="GuaranteePeriodYears" />
+                <ScalarProperty Name="ImageFileName" ColumnName="ImageFileName" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ProductTypeID" ColumnName="ProductTypeID" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products_reorderlevel">
+            <EntityTypeMapping TypeName="posdbModel.products_reorderlevel">
+              <MappingFragment StoreEntitySet="products_reorderlevel">
+                <ScalarProperty Name="ReorderLevel" ColumnName="ReorderLevel" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="purchasesorderdetails">
+            <EntityTypeMapping TypeName="posdbModel.purchasesorderdetail">
+              <MappingFragment StoreEntitySet="purchasesorderdetails">
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="TaxPercentage" ColumnName="TaxPercentage" />
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="purchasesorders">
+            <EntityTypeMapping TypeName="posdbModel.purchasesorder">
+              <MappingFragment StoreEntitySet="purchasesorders">
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="HoldInvoice" ColumnName="HoldInvoice" />
+                <ScalarProperty Name="UpdateDt" ColumnName="UpdateDt" />
+                <ScalarProperty Name="time_hour" ColumnName="time_hour" />
+                <ScalarProperty Name="date_year_int" ColumnName="date_year_int" />
+                <ScalarProperty Name="date_month_string" ColumnName="date_month_string" />
+                <ScalarProperty Name="date_month_int" ColumnName="date_month_int" />
+                <ScalarProperty Name="Date_dateofmonth_int" ColumnName="Date_dateofmonth_int" />
+                <ScalarProperty Name="Date_Dayofweek_int" ColumnName="Date_Dayofweek_int" />
+                <ScalarProperty Name="Date_DayofWeek_string" ColumnName="Date_DayofWeek_string" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ModeOfPayment" ColumnName="ModeOfPayment" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+                <ScalarProperty Name="PurchaseStatus" ColumnName="PurchaseStatus" />
+                <ScalarProperty Name="TaxPercentage" ColumnName="TaxPercentage" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="PurchaseTime" ColumnName="PurchaseTime" />
+                <ScalarProperty Name="PurchaseAmount" ColumnName="PurchaseAmount" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="regions">
+            <EntityTypeMapping TypeName="posdbModel.region">
+              <MappingFragment StoreEntitySet="regions">
+                <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+                <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="posdbModel.role">
+              <MappingFragment StoreEntitySet="roles">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="salesorderdetails">
+            <EntityTypeMapping TypeName="posdbModel.salesorderdetail">
+              <MappingFragment StoreEntitySet="salesorderdetails">
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="TaxPercentage" ColumnName="TaxPercentage" />
+                <ScalarProperty Name="ProfitTaken" ColumnName="ProfitTaken" />
+                <ScalarProperty Name="FinalSalePrice" ColumnName="FinalSalePrice" />
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="salesorders">
+            <EntityTypeMapping TypeName="posdbModel.salesorder">
+              <MappingFragment StoreEntitySet="salesorders">
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="HoldInvoice" ColumnName="HoldInvoice" />
+                <ScalarProperty Name="UpdateDt" ColumnName="UpdateDt" />
+                <ScalarProperty Name="time_hour" ColumnName="time_hour" />
+                <ScalarProperty Name="date_year_int" ColumnName="date_year_int" />
+                <ScalarProperty Name="date_month_string" ColumnName="date_month_string" />
+                <ScalarProperty Name="date_month_int" ColumnName="date_month_int" />
+                <ScalarProperty Name="Date_dateofmonth_int" ColumnName="Date_dateofmonth_int" />
+                <ScalarProperty Name="Date_Dayofweek_int" ColumnName="Date_Dayofweek_int" />
+                <ScalarProperty Name="Date_DayofWeek_string" ColumnName="Date_DayofWeek_string" />
+                <ScalarProperty Name="SaleDate" ColumnName="SaleDate" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ModeOfPayment" ColumnName="ModeOfPayment" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+                <ScalarProperty Name="SaleStatus" ColumnName="SaleStatus" />
+                <ScalarProperty Name="TaxPercentage" ColumnName="TaxPercentage" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="SaleTime" ColumnName="SaleTime" />
+                <ScalarProperty Name="SaleAmount" ColumnName="SaleAmount" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stores">
+            <EntityTypeMapping TypeName="posdbModel.store">
+              <MappingFragment StoreEntitySet="stores">
+                <ScalarProperty Name="ServerPort" ColumnName="ServerPort" />
+                <ScalarProperty Name="ServerIP" ColumnName="ServerIP" />
+                <ScalarProperty Name="BusinessID" ColumnName="BusinessID" />
+                <ScalarProperty Name="StoreAddress" ColumnName="StoreAddress" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="suppliers">
+            <EntityTypeMapping TypeName="posdbModel.supplier">
+              <MappingFragment StoreEntitySet="suppliers">
+                <ScalarProperty Name="SupplierAddress" ColumnName="SupplierAddress" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="taxes">
+            <EntityTypeMapping TypeName="posdbModel.tax">
+              <MappingFragment StoreEntitySet="taxes">
+                <ScalarProperty Name="TaxAppliedDate" ColumnName="TaxAppliedDate" />
+                <ScalarProperty Name="TaxDescription" ColumnName="TaxDescription" />
+                <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="terminals">
+            <EntityTypeMapping TypeName="posdbModel.terminal">
+              <MappingFragment StoreEntitySet="terminals">
+                <ScalarProperty Name="PrinterType" ColumnName="PrinterType" />
+                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+                <ScalarProperty Name="TerminalName" ColumnName="TerminalName" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="transactions">
+            <EntityTypeMapping TypeName="posdbModel.transaction">
+              <MappingFragment StoreEntitySet="transactions">
+                <ScalarProperty Name="accountid" ColumnName="accountid" />
+                <ScalarProperty Name="transactionid" ColumnName="transactionid" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="entrytime" ColumnName="entrytime" />
+                <ScalarProperty Name="entrydate" ColumnName="entrydate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

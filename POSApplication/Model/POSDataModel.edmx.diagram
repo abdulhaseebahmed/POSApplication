@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="75adf3e662134aaeb5c8da6850755bbb" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="posdbModel.account" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="posdbModel.business" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="posdbModel.businesstype" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="posdbModel.category" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="posdbModel.customer" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="posdbModel.inventory" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="posdbModel.packingtype" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="posdbModel.posuser" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="posdbModel.product" Width="1.5" PointX="6.75" PointY="5.75" />
+        <EntityTypeShape EntityType="posdbModel.products_reorderlevel" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="posdbModel.purchasesorderdetail" Width="1.5" PointX="8.75" PointY="3.75" />
+        <EntityTypeShape EntityType="posdbModel.purchasesorder" Width="1.5" PointX="8.75" PointY="7.75" />
+        <EntityTypeShape EntityType="posdbModel.region" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="posdbModel.role" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="posdbModel.salesorderdetail" Width="1.5" PointX="2.75" PointY="10.75" />
+        <EntityTypeShape EntityType="posdbModel.salesorder" Width="1.5" PointX="10.75" PointY="3.75" />
+        <EntityTypeShape EntityType="posdbModel.store" Width="1.5" PointX="4.75" PointY="10.75" />
+        <EntityTypeShape EntityType="posdbModel.supplier" Width="1.5" PointX="10.75" PointY="10.75" />
+        <EntityTypeShape EntityType="posdbModel.tax" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="posdbModel.terminal" Width="1.5" PointX="12.75" PointY="3.75" />
+        <EntityTypeShape EntityType="posdbModel.transaction" Width="1.5" PointX="12.75" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

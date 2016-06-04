@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="648bad99c41c43c38ac16c502a07ac99" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="POSDBModel.Customer" Width="1.5" PointX="7.5" PointY="12.5" />
+        <EntityTypeShape EntityType="POSDBModel.Inventory" Width="1.5" PointX="7.5" PointY="4.625" />
+        <EntityTypeShape EntityType="POSDBModel.PackingType" Width="1.5" PointX="5.25" PointY="9" />
+        <EntityTypeShape EntityType="POSDBModel.Product" Width="1.5" PointX="5.25" PointY="5.375" />
+        <EntityTypeShape EntityType="POSDBModel.PurchaseOrderDetail" Width="1.5" PointX="7.5" PointY="1.625" />
+        <EntityTypeShape EntityType="POSDBModel.PurchaseOrder" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="POSDBModel.Region" Width="1.5" PointX="0.75" PointY="9.875" />
+        <EntityTypeShape EntityType="POSDBModel.SalesOrderDetail" Width="1.5" PointX="7.5" PointY="8.5" />
+        <EntityTypeShape EntityType="POSDBModel.SalesOrder" Width="1.5" PointX="9.75" PointY="6.875" />
+        <EntityTypeShape EntityType="POSDBModel.Store" Width="1.5" PointX="3" PointY="6.125" />
+        <EntityTypeShape EntityType="POSDBModel.StoreType" Width="1.5" PointX="0.75" PointY="6.5" />
+        <EntityTypeShape EntityType="POSDBModel.Supplier" Width="1.5" PointX="3" PointY="9.375" />
+        <EntityTypeShape EntityType="POSDBModel.sysdiagram" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="POSDBModel.Tax" Width="1.5" PointX="0.75" PointY="2" />
+        <EntityTypeShape EntityType="POSDBModel.TaxesApplied" Width="1.5" PointX="3" PointY="1.75" />
+        <AssociationConnector Association="POSDBModel.FK_SalesOrders_Customers" />
+        <AssociationConnector Association="POSDBModel.FK_Inventory_PackingTypes" />
+        <AssociationConnector Association="POSDBModel.FK_Inventory_Products" />
+        <AssociationConnector Association="POSDBModel.FK_OrderDetails_Products" />
+        <AssociationConnector Association="POSDBModel.FK_Products_Suppliers" />
+        <AssociationConnector Association="POSDBModel.FK_PurchaseOrderDetails_Products" />
+        <AssociationConnector Association="POSDBModel.FK_PurchaseOrderDetails_PurchaseOrders" />
+        <AssociationConnector Association="POSDBModel.FK_PurchaseOrders_Stores" />
+        <AssociationConnector Association="POSDBModel.FK_PurchaseOrders_Suppliers" />
+        <AssociationConnector Association="POSDBModel.FK_PurchaseOrders_TaxesApplied" />
+        <AssociationConnector Association="POSDBModel.FK_Suppliers_Regions" />
+        <AssociationConnector Association="POSDBModel.FK_SalesOrders_SalesOrderDetails" />
+        <AssociationConnector Association="POSDBModel.FK_SalesOrders_Stores" />
+        <AssociationConnector Association="POSDBModel.FK_Stores_StoreTypes" />
+        <AssociationConnector Association="POSDBModel.FK_TaxesApplied_Taxes" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
